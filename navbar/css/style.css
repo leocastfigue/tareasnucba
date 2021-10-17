@@ -11,15 +11,25 @@ body{
 }
 /* le doy estilo a la barra nav */
 .menu{
-    background-color:salmon; /* le doy un fondo a la barra nav */
     height: 75px; /* le doy el alto a la barra nav */
     width: 100vw; /* le doy el ancho, y en vw(viewport) para darle todo el ancho donde se este viendo*/
     display: flex; /* para usar flexbox */
     justify-content: space-between; /* divido el espacio en los 3 elementos que tengo de toda nuestra y el navegador le da la separacion correspondiente para cada elemento */
-    align-items: center; /* centramos verticalmente la barra nav */
-    border-bottom: 1px solid #fff; /* para darle un pequeño boton a los elementos */
-    box-shadow: 5px 0 10px rgba(0,0,0,.6); /* le damos una pequeña sombra a los elementos (5px en "x" / 0 en "y" / 10px de difaminacion y el collor rgba para la sombra */
-    
+    align-items: center; /* centramos verticalmente la barra nav */ 
+}
+/* ponemos un pseudoelemento para acceder a una parte de mi pagina, es para poner la imagen antes de la barra nav, por eso es before */
+.menu::before{
+    content: ""; /* es para poner contenido, x ej. un dialogo, en este caso loe dejamos en blanco xq no le vamos a poner nada */
+    position: absolute; /*  */
+    top: 0; /*  */
+    left: 0; /* lo posicionamos a la izquierda */
+    width: 100%; /* le damos la ancho */
+    height: 100%; /* le damos la altura */
+    background-position:0 0vw; /* para mover la imagen 0 en "x" y -15 en "y" */
+    background-size:contain; /* le damos el tamaño a la imagen de fondo */
+    background-image: url(https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2018/05/hogwarts-mystery_1.jpg); /* agregamos una imagen de fondo mediante una url */
+    clip-path: polygon(100% 0, 100% 20%, 50% 32%, 0 20%, 0 0); /* le dimos una forma de pentagono a la barra mediante clippy */
+    z-index:-1; /* para que la imagen me permita ver las letras */
 }
 /* le damos estilo al logo */
 .logo{
@@ -27,6 +37,7 @@ body{
     font-size: 35px; /* le damos el tamaño */
     padding: 0 80px; /* 0 arriba y abajo y 80px a los lados */
     font-weight: bold; /* para la tamaño */
+    padding-top: 105px;
 }
 /* le damos estilo a nuestra lista del menu */
 .menu_items{
@@ -36,7 +47,7 @@ body{
 /* le damos estiilo a nuestras listas */
 }
 .menu_items li{
-    border-radius: 3px; /* le damos un redondeado al borde */
+    
     margin: 0 5px; /* le damos margen de  0 arriba y abajo y 5px a los lados */
 }
 /* le damos estilo a las etiquetas "a" que son los links */
@@ -46,11 +57,12 @@ body{
     font-size: 18px;/* por ahora le damos ese tamaño y despues lo cambiamos para dispositvos moviles*/
     display: block; /* para los links ocupen todo el espacio disponible dentro de los li */
     text-transform: uppercase; /* para que este todo en mayuscula */
-    color: #fff;
+    color:#f4f4f4;
+    
 }
 /* le damos un pequeño fondo cuando nos posicionamos encima de los elementos */
-.menu_items li:hover{
-    background-color: rgba(0,0,0,.3); /* le damos color al fondo */
+.menu_items li a:hover{
+    color: #d22938; /* le damos color al fondo */
     transition: .4s; /* le damos 4 segundos para que no sea muy brusca el fondo */
 }
 /* le damos estilo al boton del menu */
