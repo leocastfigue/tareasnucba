@@ -1,94 +1,92 @@
-*{
+/* reseteamos  */
+*, *::before{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* le doy una fuente a las letras, que traje desde Google Fonts, y el fondo */
 body{
-    background-size: cover;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center center;
-    height: 100vh;
-    font-family: "audiowide", cursive;
-    font-weight: 600;
-    font-size: 16px;
+    font-family: "audiowide", cursive; /* le doy la fuente */
+    background-color: #f4f4f4; /* le doy un fondo al body */
 }
-body::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-image: url(https://generacionxbox.com/wp-content/uploads/2021/01/hogwarts-legacy-generacion-xbox.jpg);
-    clip-path: polygon(100% 0, 100% 20%, 50% 32%, 0 20%, 0 0);
-    z-index:-1;
+/* le doy estilo a la barra nav */
+.menu{
+    background-color:salmon; /* le doy un fondo a la barra nav */
+    height: 75px; /* le doy el alto a la barra nav */
+    width: 100vw; /* le doy el ancho, y en vw(viewport) para darle todo el ancho donde se este viendo*/
+    display: flex; /* para usar flexbox */
+    justify-content: space-between; /* divido el espacio en los 3 elementos que tengo de toda nuestra y el navegador le da la separacion correspondiente para cada elemento */
+    align-items: center; /* centramos verticalmente la barra nav */
+    border-bottom: 1px solid #fff; /* para darle un pequeño boton a los elementos */
+    box-shadow: 5px 0 10px rgba(0,0,0,.6); /* le damos una pequeña sombra a los elementos (5px en "x" / 0 en "y" / 10px de difaminacion y el collor rgba para la sombra */
+    
 }
-a{
-    text-decoration: none;
-}
-.header{
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 70px;
-}
+/* le damos estilo al logo */
 .logo{
-    cursor: pointer;
+    color: #fff; /* le damos el color */
+    font-size: 35px; /* le damos el tamaño */
+    padding: 0 80px; /* 0 arriba y abajo y 80px a los lados */
+    font-weight: bold; /* para la tamaño */
 }
-.nav-area{
-    list-style: none;
+/* le damos estilo a nuestra lista del menu */
+.menu_items{
+    display: flex; /* para poscionar a los elementos uno al lado del otro */
+    list-style: none; /* para sacarle las pelotitas a las listas */
+    margin-right: 30px; /* le damos margen para que se separe del borde derecho de la pantalla */
+/* le damos estiilo a nuestras listas */
 }
-.nav-area li{
-    display: inline-block;
-    padding: 0 15px;
-    text-transform: uppercase;
+.menu_items li{
+    border-radius: 3px; /* le damos un redondeado al borde */
+    margin: 0 5px; /* le damos margen de  0 arriba y abajo y 5px a los lados */
 }
-.nav-area li a{
-    transition: .3s;
+/* le damos estilo a las etiquetas "a" que son los links */
+.menu_items li a{
+    padding: 7px 13px; /* le damos 7px arriba y abajo y 13px a los lados*/
+    text-decoration: none; /* para sacarle el subrayado */
+    font-size: 18px;/* por ahora le damos ese tamaño y despues lo cambiamos para dispositvos moviles*/
+    display: block; /* para los links ocupen todo el espacio disponible dentro de los li */
+    text-transform: uppercase; /* para que este todo en mayuscula */
     color: #fff;
 }
-.nav-area li a:hover{
-    color:#d22938;
+/* le damos un pequeño fondo cuando nos posicionamos encima de los elementos */
+.menu_items li:hover{
+    background-color: rgba(0,0,0,.3); /* le damos color al fondo */
+    transition: .4s; /* le damos 4 segundos para que no sea muy brusca el fondo */
 }
-.botonMenu{
-    cursor: pointer;
-    color:aqua;
-    font-size: 16px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 10px 30px;
-    border-radius: 5px;
-    background: #d22938;
+/* le damos estilo al boton del menu */
+.btn_menu{
+    margin-right: 30px; /* para que se separe del maargen derecho de la pantalla */
+    font-size: 25px; /* le damos el tamaño */
+    color: #fff; /* le damos color */
+    cursor: pointer; /* para que se vea la manito cuando nos posicionemos sobre el elemento */
+    display: none; /* este boton se va a mostrar solamente en moviles */
 }
 /* para mostrar u ocultar el menu */
-ul.show{
-    top: 65px; /* tamaño que le vamos a colocar para los moviles */
+ul.mostrar{
+    top: 65px;
 }
 /* ponemos media querys para hacerlo responsivo, la primer mediaquery q utilizamos es de 952px con 2 modificaciones */
 @media screen and (max-width:952px){
-    .logo {
-        font-size: 30px; /* le qutitamos un poco de tamaño de la fuente */
-        padding-left: 35px; /* le restamos un poco de padding left */}
-    .nav-area li a{
+    /* para modificar el logo */
+    .logo{
+        font-size: 30px;/* le qutitamos un poco de tamaño de la fuente */
+        padding-left: 35px;/* le restamos un poco de padding left */
+    }
+    /* para modificar las los links */
+    .menu_items li a{
         font-size: 16px;
     }
 }
 /* la segunda mediaquery va ser de 858px con modificaciones */
 @media screen and (max-width: 858px){
-    .navBar{
+    .menu{
         height: 65px; /* le colocamos el alto de 65px */
     }
-    .botonMenu{
+    .btn_menu{
         display: inline-flex; /* para que se me muestre el boton para poder abrir el menu, y que se muestren en la posicion que le corresponde */
     }
     /* vamos a modificar el listado de nuestro menu que nuestra lista desordenada "ul" */
-    .nav-area{
+    .menu_items{
         position: fixed; /* le damos posicion fija xq la vmaos a sacar del viewport para darle el efecto que ingresa desde arriba, para poder manipularla */
         width: 100vw; /* para que ocupe todo el tamaño del viewport */
         height: calc(100%-65px); /* el alto debe ser realtivo al tamaño de la pantalla menos del tamaño del nav, el navegador va a calcular para ver que tamaño le va a dar */
@@ -99,21 +97,22 @@ ul.show{
         flex-direction: column; /* para poner los elementos uno abajo del otro, para los dispositivos moviles */
     }
     /* le damos estilo a nuestro menu de nuestra lista */
-    .nav-area li{
-        margin: 30px 0 0 0;
+    .menu_items li{
+        margin: 30px 0 0 0; /* le damos un margen de 30px arriba, 0 derecha, 0 a la abajo y 0 a la izquierda */
         line-height: 30px; 
     }
-    .nav-area li:hover{
+    /* le damos estilo cuando nos pocicionamos encima */
+    .menu_items li:hover{
         background: none; /* le quitamos el fondo cuando estemos en moviles */
     }
     /* le damos estilo a los links */
-    .nav-area li a{
+    .menu_items li a{
         font-size: 20px; /* le cambiamos la fuente para q se vea mejor */
         color: #fff; /* ahora le ponemos claro porque el fondo va ser oscuro */
         font-weight: bold; /* le damos esto para que se vea mas y mejor */
     }
     /* le cambiamos el estado hover de cada uno de los links */
-    .nav-area li a:hover{
+    .menu_items li a:hover{
         color: lightpink;
     }
     /* le cambiamos el estilo al logo */
@@ -123,10 +122,10 @@ ul.show{
     }
     /* para poner en el dispositivo movil de costado y se vea bien */
     @media screen and (max-width: 858px) and (orientation: landscape) /* esta orientation es para que sea horizontal */{
-        .nav-area li{
+        .menu_items li{
             margin: 5px 0 0 0; /* le bajamos considerablemente el margen de las listas "li" */
         }
-        .nav-area{
+        .menu_items{
             overflow: scroll; /* para que el usuario sea capaz de arrastrar el "ul" y ver todas las opciones disponibles*/
             height: calc(100%-65px); 
         }
