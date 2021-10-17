@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    font-family: "audiowide", cursive;
+    font-weight: 600;
+    font-size: 16px;
+}
+body::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-image: url(https://generacionxbox.com/wp-content/uploads/2021/01/hogwarts-legacy-generacion-xbox.jpg);
+    clip-path: polygon(100% 0, 100% 20%, 50% 32%, 0 20%, 0 0);
+    z-index:-1;
+}
+a{
+    text-decoration: none;
+}
+.header{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 70px;
+}
+.logo{
+    cursor: pointer;
+}
+.nav-area{
+    list-style: none;
+}
+.nav-area li{
+    display: inline-block;
+    padding: 0 15px;
+    text-transform: uppercase;
+}
+.nav-area li a{
+    transition: .3s;
+    color: #fff;
+}
+.nav-area li a:hover{
+    color:#d22938;
+}
+.botonMenu{
+    cursor: pointer;
+    color:aqua;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    border-radius: 5px;
+    background: #d22938;
+}
+/* para mostrar u ocultar el menu */
+ul.show{
+    top: 65px; /* tamaño que le vamos a colocar para los moviles */
+}
+/* ponemos media querys para hacerlo responsivo, la primer mediaquery q utilizamos es de 952px con 2 modificaciones */
+@media screen and (max-width:952px){
+    .logo {
+        font-size: 30px; /* le qutitamos un poco de tamaño de la fuente */
+        padding-left: 35px; /* le restamos un poco de padding left */}
+    .nav-area li a{
+        font-size: 16px;
+    }
+}
+/* la segunda mediaquery va ser de 858px con modificaciones */
+@media screen and (max-width: 858px){
+    .navBar{
+        height: 65px; /* le colocamos el alto de 65px */
+    }
+    .botonMenu{
+        display: inline-flex; /* para que se me muestre el boton para poder abrir el menu, y que se muestren en la posicion que le corresponde */
+    }
+    /* vamos a modificar el listado de nuestro menu que nuestra lista desordenada "ul" */
+    .nav-area{
+        position: fixed; /* le damos posicion fija xq la vmaos a sacar del viewport para darle el efecto que ingresa desde arriba, para poder manipularla */
+        width: 100vw; /* para que ocupe todo el tamaño del viewport */
+        height: calc(100%-65px); /* el alto debe ser realtivo al tamaño de la pantalla menos del tamaño del nav, el navegador va a calcular para ver que tamaño le va a dar */
+        background:#414141; /* le damos un fondo */
+        top: -100vh; /* le vamos a sacar del viewport, hacia arriba fuera de la pantalla */
+        text-align: center; /* para alinear el texto al centro */
+        transition: all .4s;
+        flex-direction: column; /* para poner los elementos uno abajo del otro, para los dispositivos moviles */
+    }
+    /* le damos estilo a nuestro menu de nuestra lista */
+    .nav-area li{
+        margin: 30px 0 0 0;
+        line-height: 30px; 
+    }
+    .nav-area li:hover{
+        background: none; /* le quitamos el fondo cuando estemos en moviles */
+    }
+    /* le damos estilo a los links */
+    .nav-area li a{
+        font-size: 20px; /* le cambiamos la fuente para q se vea mejor */
+        color: #fff; /* ahora le ponemos claro porque el fondo va ser oscuro */
+        font-weight: bold; /* le damos esto para que se vea mas y mejor */
+    }
+    /* le cambiamos el estado hover de cada uno de los links */
+    .nav-area li a:hover{
+        color: lightpink;
+    }
+    /* le cambiamos el estilo al logo */
+    .logo{
+        font-size: 25px;
+        padding-left: 35px;
+    }
+    /* para poner en el dispositivo movil de costado y se vea bien */
+    @media screen and (max-width: 858px) and (orientation: landscape) /* esta orientation es para que sea horizontal */{
+        .nav-area li{
+            margin: 5px 0 0 0; /* le bajamos considerablemente el margen de las listas "li" */
+        }
+        .nav-area{
+            overflow: scroll; /* para que el usuario sea capaz de arrastrar el "ul" y ver todas las opciones disponibles*/
+            height: calc(100%-65px); 
+        }
+    }
+}
